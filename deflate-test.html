@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GeoTIFF</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>GeoTIFF JS with Deflate Compression</h1>
+    <script src="https://cdn.jsdelivr.net/npm/geotiff"></script>
+    <script>
+      const url = "deflate.tif";
+      (async function () {
+        const tiff = await GeoTIFF.fromUrl(url);
+        const image = await tiff.getImage();
+        const data = await image.readRasters().catch((e) => console.error(e));
+        console.log("data is", data);
+      })();
+    </script>
+  </body>
+</html>
